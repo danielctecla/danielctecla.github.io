@@ -1,40 +1,51 @@
-# Astro Starter Kit: Basics
+# Daniel Catonga · Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+Personal site and blog, built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+🌐 **Live:** [danielctecla.github.io](https://danielctecla.github.io)
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
 ```text
 /
+├── .github/workflows/
+│   └── deploy.yml          # Builds and deploys to GitHub Pages on every push to main
 ├── public/
+│   ├── assets/             # Images and documents served as-is
 │   └── favicon.svg
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
+│   ├── components/         # Header, Footer, Intro, SectionContainer
+│   ├── content/
+│   │   └── blog/           # Blog posts in Markdown
 │   ├── layouts/
 │   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── pages/
+│   │   ├── index.astro
+│   │   └── blog/           # /blog and /blog/<post>
+│   ├── styles/
+│   │   └── global.css      # Tailwind theme (colors, fonts)
+│   └── content.config.ts   # Blog collection schema
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+To learn more about the folder structure of an Astro project, refer to [the guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## ✍️ Writing a blog post
 
-Any static assets, like images, can be placed in the `public/` directory.
+Create a `.md` file in `src/content/blog/`. The file name becomes the URL (`my-post.md` → `/blog/my-post`).
+
+```md
+---
+title: 'My post'
+description: 'One line summary shown in the list.'
+date: 2026-11-14
+draft: false
+---
+
+Post content here.
+```
+
+Posts with `draft: true` are not published.
 
 ## 🧞 Commands
 
@@ -49,6 +60,10 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## 📦 Deployment
+
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site with [`withastro/action`](https://github.com/withastro/action) and publishes it to GitHub Pages.
+
 ## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Check the [Astro documentation](https://docs.astro.build) or the [Tailwind CSS documentation](https://tailwindcss.com/docs).
