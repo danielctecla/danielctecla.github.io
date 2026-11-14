@@ -1,6 +1,4 @@
 ---
-import Entry from './Entry.astro'
-
 const ExperienceItems = [
 	{
 		role: 'Software Engineer Intern',
@@ -31,12 +29,28 @@ const ExperienceItems = [
 ]
 ---
 
-<ul class="space-y-6">
-	{
-		ExperienceItems.map(({ role, company, link, location, date, description }) => (
-			<Entry title={company} href={link} meta={`${role} · ${location}`} date={date}>
-				{description}
-			</Entry>
-		))
-	}
+<ul class="prose-links space-y-4">
+	{ExperienceItems.map(({ role, company, link, location, date, description }) => (
+		<li>
+			<div class="flex items-baseline justify-between gap-4">
+				<h3 class="min-w-0">
+					<span class="font-medium">
+						{link ? (
+							<a href={link} target="_blank" rel="noopener">
+								{company}
+							</a>
+						) : (
+							company
+						)}
+					</span>
+					<span class="text-sm text-tx-secondary"> · {role}</span>
+				</h3>
+				<span class="shrink-0 font-mono text-xs text-tx-secondary">
+					<span class="hidden sm:inline">{location} · </span>
+					{date}
+				</span>
+			</div>
+			<p class="mt-0.5 text-sm leading-relaxed text-tx-primary/90">{description}</p>
+		</li>
+	))}
 </ul>

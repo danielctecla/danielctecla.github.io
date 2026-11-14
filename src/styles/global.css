@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-background-primary: #faf8f2;
+	--color-background-secondary: #e8e3d8;
+	--color-accent: #1f57c3;
+	--color-accent-secondary: #163f8f;
+	--color-tx-primary: #1a1a1a;
+	--color-tx-secondary: #5f5b53;
+
+	--font-serif: 'Source Serif 4 Variable', Georgia, serif;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+::selection {
+	background-color: #d6e2f7;
+}
+
+.prose-links a {
+	@apply text-accent decoration-accent/25 hover:text-accent-secondary hover:decoration-accent-secondary underline underline-offset-[3px] transition-colors;
+}
