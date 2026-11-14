@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-	--color-background-primary: #faf8f2;
+	--color-background-primary: #fdfcf9;
 	--color-background-secondary: #e8e3d8;
 	--color-accent: #1f57c3;
 	--color-accent-secondary: #163f8f;
@@ -27,4 +27,44 @@ html {
 
 .prose-links a {
 	@apply text-accent decoration-accent/25 hover:text-accent-secondary hover:decoration-accent-secondary underline underline-offset-[3px] transition-colors;
+}
+
+.post {
+	@apply space-y-5 text-[17px] leading-relaxed;
+}
+
+.post h2 {
+	@apply pt-4 text-xl font-semibold tracking-tight;
+}
+
+.post h3 {
+	@apply pt-2 text-lg font-semibold;
+}
+
+.post ul {
+	@apply list-disc space-y-1 pl-6;
+}
+
+.post ol {
+	@apply list-decimal space-y-1 pl-6;
+}
+
+.post blockquote {
+	@apply border-l-2 border-background-secondary pl-4 text-tx-secondary italic;
+}
+
+.post code {
+	@apply rounded bg-background-secondary/60 px-1 py-0.5 font-mono text-[0.85em];
+}
+
+.post pre {
+	@apply overflow-x-auto rounded p-4 text-sm;
+}
+
+.post pre code {
+	@apply bg-transparent p-0;
+}
+
+.post img {
+	@apply rounded;
 }

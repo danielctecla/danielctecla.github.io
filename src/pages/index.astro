@@ -1,26 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import SectionContainer from '../components/SectionContainer.astro'
-
 import Intro from '../components/Intro.astro'
-import Experience from '../components/Experience.astro'
-import Projects from '../components/Projects.astro'
-import Awards from '../components/Awards.astro'
 ---
 
 <Layout title="Daniel Catonga">
-	<main class="space-y-12 px-4 pt-10">
+	<main class="px-4 pt-12 sm:pt-16">
 		<SectionContainer>
 			<Intro />
-		</SectionContainer>
-		<SectionContainer id="experience" label="Experience">
-			<Experience />
-		</SectionContainer>
-		<SectionContainer id="projects" label="Projects">
-			<Projects />
-		</SectionContainer>
-		<SectionContainer id="awards" label="Awards">
-			<Awards />
 		</SectionContainer>
 	</main>
 </Layout>

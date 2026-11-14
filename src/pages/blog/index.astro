@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+)
+
+const formatDate = (date: Date) =>
+	date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+---
+
+<Layout title="Blog · Daniel Catonga">
+	<main class="mx-auto max-w-2xl px-4 pt-10">
+		<h1 class="text-2xl font-semibold tracking-tight">Blog</h1>
+		<p class="mt-1 text-tx-secondary">Notes on AI, software and what I'm learning along the way.</p>
+
+		{
+			posts.length === 0 ? (
+				<p class="mt-10 font-mono text-sm text-tx-secondary">No posts yet. Coming soon.</p>
+			) : (
+				<ul class="prose-links mt-10 space-y-6">
+					{posts.map((post) => (
+						<li>
+							<div class="flex items-baseline justify-between gap-4">
+								<h2 class="font-medium">
+									<a href={`/blog/${post.id}`}>{post.data.title}</a>
+								</h2>
+								<time
+									datetime={post.data.date.toISOString()}
+									class="shrink-0 font-mono text-xs text-tx-secondary"
+								>
+									{formatDate(post.data.date)}
+								</time>
+							</div>
+							<p class="mt-0.5 text-sm text-tx-secondary">{post.data.description}</p>
+						</li>
+					))}
+				</ul>
+			)
+		}
+	</main>
+</Layout>

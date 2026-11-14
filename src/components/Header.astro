@@ -1,36 +1,26 @@
 ---
-const links = [
-	{
-		title: 'Email',
-		url: 'mailto:daniel.ctecla@gmail.com'
-	},
-	{
-		title: 'GitHub',
-		url: 'https://github.com/danielctecla',
-		external: true
-	},
-	{
-		title: 'LinkedIn',
-		url: 'https://linkedin.com/in/danielctecla',
-		external: true
-	}
-]
+const path = Astro.url.pathname
+const isBlog = path.startsWith('/blog')
 ---
 
-<header class="px-4 pt-16 sm:pt-24">
-	<div class="mx-auto max-w-2xl">
-		<h1 class="text-2xl font-semibold tracking-tight">Daniel Catonga</h1>
-		<p class="mt-1 font-mono text-xs text-tx-secondary">
-			software engineer · AI student · Mexico City
-		</p>
-		<nav class="prose-links mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
-			{
-				links.map((link) => (
-					<a href={link.url} {...(link.external && { target: '_blank', rel: 'noopener' })}>
-						{link.title}
-					</a>
-				))
-			}
-		</nav>
-	</div>
+<header class="px-4 pt-5 sm:pt-6">
+	<nav class="mx-auto flex max-w-4xl items-baseline justify-between border-b border-background-secondary pb-4">
+		<a
+			href="/"
+			class="text-lg font-semibold tracking-tight transition-colors hover:text-accent"
+			aria-current={!isBlog ? 'page' : undefined}
+		>
+			Daniel Catonga
+		</a>
+		<a
+			href="/blog"
+			class:list={[
+				'font-mono text-sm transition-colors hover:text-accent',
+				isBlog ? 'text-tx-primary' : 'text-tx-secondary'
+			]}
+			aria-current={isBlog ? 'page' : undefined}
+		>
+			Blog
+		</a>
+	</nav>
 </header>
